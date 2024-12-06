@@ -1,6 +1,7 @@
 import './style.css'
 import { AppState } from './helpers.ts'
 import { Calculateage } from './helpers.ts'
+import { uploadImage } from './upload';
 
 // Define User interface
 const appState = new AppState();
@@ -119,6 +120,15 @@ async function renderUsers(): Promise<void> {
       </div>
     </div>
   `;
+
+  app.innerHTML += `<input type="file" id="imageInput" accept="image/*">
+    <button id="uploadButton">Upload</button>
+    <div id="status"></div>
+    `;
+    
+  // Add event listener for upload button
+  document.getElementById('uploadButton')?.addEventListener('click', uploadImage);
+
 }
 
 // Initial render
